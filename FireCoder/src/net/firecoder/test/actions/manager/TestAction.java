@@ -34,7 +34,7 @@ public class TestAction {
 	
 	private String jsonParam;
 	private String strAjaxChannel;
-	private Map<String, String> result; 
+	private Map<String, Object> result; 
 	private List<MyObject> list;
 	
 	@Action(
@@ -59,11 +59,11 @@ public class TestAction {
 
 		strAjaxChannel = sb.toString();//返回的数据
 		
-		result = new HashMap<String, String>();
+		result = new HashMap<String, Object>();
 		result.put("key0", "value0");
-		result.put("key1", "value1");
+		result.put("key1", 345);
 		result.put("key2", "value2");
-		result.put("key3", "value3");
+		result.put("key3", 36.4);
 		
 		list = new ArrayList<MyObject>();
 		MyObject obj = null;
@@ -103,11 +103,11 @@ public class TestAction {
 		this.jsonParam = jsonParam;
 	}
 
-	public Map<String, String> getResult() {
+	public Map<String, Object> getResult() {
 		return result;
 	}
 
-	public void setResult(Map<String, String> result) {
+	public void setResult(Map<String, Object> result) {
 		this.result = result;
 	}
 
