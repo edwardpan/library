@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+	
+	<!-- <bean id="dataSource" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+	 	<property name="alias"> 
+	     	<value>${datasource.proxool.alias}</value> 
+	    </property> 
+		<property name="driver"> 
+	    	<value>${datasource.proxool.driver}</value> 
+	    </property> 
+	    <property name="driverUrl"> 
+	     	<value>${datasource.proxool.url}</value> 
+	    </property> 
+	    <property name="user"> 
+	     	<value>${datasource.proxool.username}</value> 
+	    </property> 
+	    <property name="password"> 
+	     	<value>${datasource.proxool.password}</value> 
+	    </property> 
+	    <property name="simultaneousBuildThrottle">
+	     	<value>${datasource.proxool.simultaneousBuildThrottle}</value>
+	    </property>
+	    <property name="prototypeCount"> 
+	     	<value>${datasource.proxool.prototypeCount}</value> 
+	    </property> 
+	    <property name="maximumConnectionCount"> 
+	     	<value>${datasource.proxool.maximumConnectionCount}</value> 
+	    </property> 
+	    <property name="minimumConnectionCount"> 
+	     	<value>${datasource.proxool.minimumConnectionCount}</value> 
+	    </property>-->
+	    <!--property name="trace"> 
+	     	<value>${datasource.proxool.trace}</value> 
+	    </property> 
+	    <property name="verbose"> 
+	     	<value>${datasource.proxool.verbose}</value> 
+	    </property>
+	    <property name="houseKeepingTestSql">
+	     	<value>${datasource.proxool.houseKeepingTestSql}</value>
+	    </property>
+	    <property name="characterEncoding">
+	     	<value>${datasource.proxool.characterEncoding}</value>
+	    </property-->
+	    <!--property name="houseKeepingSleepTime">
+	     	<value>${datasource.proxool.houseKeepingSleepTime}</value> 
+	    </property-->
+	<!-- </bean> -->
+	
+	<!-- 配置事务 -->
+	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="handlers" expression="execution(* com.woobsoft.filedepository.core..*.*(..))"/>
+		<aop:advisor pointcut-ref="handlers" advice-ref="txAdvice"/>
+	</aop:config>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="query*" read-only="true"/>
+			<tx:method name="do*" read-only="false" propagation="REQUIRED" 
+				rollback-for="Exception"/>
+			<tx:method name="clear*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="insert*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="add*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="save*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="update*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="modify*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="delete*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="initBaseData" read-only="false" propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<bean id="transactionBase"  class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"  
+            lazy-init="true" abstract="true">  
+        <property name="transactionManager" ref="transactionManager" />  
+        <property name="transactionAttributes">  
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>  
+            </props>
+        </property>
+    </bean>
+	
+	<bean id="shareDao" class="com.woobsoft.filedepository.core.dao.ShareDao"></bean> -->
+</beans>
