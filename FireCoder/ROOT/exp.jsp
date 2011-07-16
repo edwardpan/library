@@ -12,6 +12,7 @@
 	<meta http-equiv="description" content="This is my page">
     <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
 	<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
 	<script type="text/javascript">
 	$.ajaxSetup({cache:false,type:"POST"});
 	function executeExp(){
