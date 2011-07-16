@@ -7,5 +7,9 @@
 	<bean id="testAction" class="net.firecoder.test.actions.manager.TestAction">
 		<property name="strTest" ref="strTest"/>
 	</bean>
-       
+	
+	<bean id="userAction" class="net.firecoder.test.actions.power.UserAction">
+		<property name="userManager" ref="userManager"/>
+	</bean>
+      
 </beans>

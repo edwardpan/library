@@ -5,5 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
        
 	<bean id="strTest" class="net.firecoder.test.beans.StringTest" />
-       
+    
+    <bean id="userManager" class="net.firecoder.test.beans.impl.UserManagerImpl">
+    	<property name="userDao" ref="userDao"/>
+    </bean>
+    
 </beans>

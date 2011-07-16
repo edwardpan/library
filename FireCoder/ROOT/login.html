@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>index.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
+	<script type="text/javascript">
+	//$.ajaxSetup({cache:false,type:"POST"});
+	function login(){
+		$("#loginBtn").attr("disabled", "true");
+		$("#loginBtn").attr("value", "正在登录...");
+		$.getJSON("power/login", {loginName:$("#loginName").attr("value")}, function(json){
+    		if(json.jsonChannel.length > 0){
+				var obj = eval("(" + json.jsonChannel + ")");
+				$("#showStr").html("当前登录人员为：" + obj.realName + 
+					"，账号为：" + obj.loginName + 
+					"，密码为：" + obj.password);
+			} else {
+				$("#showStr").html("登录失败");
+			}
+    		$("#loginBtn").attr("disabled", "false");
+    		$("#loginBtn").attr("value", "请求登录");
+    	});
+	}
+    </script>
+  </head>
+  
+  <body>
+    This is my HTML page. <br>
+    <input type="text" id="loginName" value=""/>
+    <input type="button" id="loginBtn" value="请求登录" onclick="login()"/>
+    <div id="showStr"></div>
+  </body>
+</html>
