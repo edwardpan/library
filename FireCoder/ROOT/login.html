@@ -13,10 +13,10 @@
 	<script type="text/javascript">
 	//$.ajaxSetup({cache:false,type:"POST"});
 	function login(){
-		$("#loginBtn").attr("disabled", "true");
-		$("#loginBtn").attr("value", "正在登录...");
+		$("#loginBtn").attr("disabled", "disabled");
+		$("#loginBtn").attr("value", "登录中...");
 		$.getJSON("power/login", {loginName:$("#loginName").attr("value")}, function(json){
-    		if(json.jsonChannel.length > 0){
+    		if(json.jsonChannel != null && json.jsonChannel != "null" && json.jsonChannel.length > 0){
 				var obj = eval("(" + json.jsonChannel + ")");
 				$("#showStr").html("当前登录人员为：" + obj.realName + 
 					"，账号为：" + obj.loginName + 
@@ -24,7 +24,7 @@
 			} else {
 				$("#showStr").html("登录失败");
 			}
-    		$("#loginBtn").attr("disabled", "false");
+    		$("#loginBtn").removeAttr("disabled");
     		$("#loginBtn").attr("value", "请求登录");
     	});
 	}
