@@ -11,20 +11,25 @@
 	<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
 	<script type="text/javascript">
-	//$.ajaxSetup({cache:false,type:"POST"});
+	$.ajaxSetup({cache:false,type:"POST"});
+	$.ajaxError(function(event,xhr,options,exc){
+		alert("Error requesting " + opt.url + ": " + xhr.status + " " + xhr.statusText);
+	});
 	function login(){
 		$("#loginBtn").attr("disabled", "disabled");
 		$("#loginBtn").attr("value", "登录中...");
-		$.getJSON("power/login", {loginName:$("#loginName").attr("value")}, function(json){
+		$.getJSON("power/login", {loginName:$("#loginName").attr("value")}, function(json, status){
     		if(json.jsonChannel != null && json.jsonChannel != "null" && json.jsonChannel.length > 0){
 				var obj = eval("(" + json.jsonChannel + ")");
 				$("#showStr").html("当前登录人员为：" + obj.realName + 
 					"，账号为：" + obj.loginName + 
 					"，密码为：" + obj.password);
+			} else if (json.message != null && json.message != "null"){
+				$("#showStr").html(json.message);
 			} else {
 				$("#showStr").html("登录失败");
 			}
-    		$("#loginBtn").removeAttr("disabled");
+			$("#loginBtn").removeAttr("disabled");
     		$("#loginBtn").attr("value", "请求登录");
     	});
 	}
