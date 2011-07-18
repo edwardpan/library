@@ -1,4 +1,4 @@
-create database firecoder;
+﻿create database firecoder;
 
 use firecoder;
 create table if not exists User(
@@ -15,3 +15,9 @@ insert into User(loginname, realname, password) values('panchao', '潘超', 'pan
 
 select * from user;
 
+delete from user where id in (25,26,27,28)
+
+begin;
+insert into User(loginname, realname, password) values('pan','pan','pan');
+
+rollback;
