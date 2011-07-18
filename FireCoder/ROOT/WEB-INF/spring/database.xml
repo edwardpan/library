@@ -62,10 +62,9 @@
 			<tx:method name="get*" read-only="true"/>
 			<tx:method name="find*" read-only="true"/>
 			<tx:method name="query*" read-only="true"/>
-			<tx:method name="do*" read-only="false" propagation="REQUIRED" rollback-for="Exception"/>
 			<tx:method name="clear*" read-only="false" propagation="REQUIRED"/>
 			<tx:method name="insert*" read-only="false" propagation="REQUIRED"/>
-			<tx:method name="add*" read-only="false" propagation="REQUIRED"/>
+			<tx:method name="add*" read-only="false" propagation="REQUIRED" rollback-for="BeanException"/>
 			<tx:method name="save*" read-only="false" propagation="REQUIRED"/>
 			<tx:method name="update*" read-only="false" propagation="REQUIRED"/>
 			<tx:method name="modify*" read-only="false" propagation="REQUIRED"/>
@@ -74,8 +73,8 @@
 		</tx:attributes>
 	</tx:advice>
 	<aop:config proxy-target-class="true">
-		<aop:pointcut id="handlers" expression="execution(* net.firecoder.test.beans.*.*(..))"/>
-		<aop:advisor pointcut-ref="handlers" advice-ref="txAdvice"/>
+		<aop:pointcut id="beans" expression="execution(* net.firecoder.test.beans..*.*(..))"/>
+		<aop:advisor pointcut-ref="beans" advice-ref="txAdvice"/>
 	</aop:config>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<bean id="transactionBase"  class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"  

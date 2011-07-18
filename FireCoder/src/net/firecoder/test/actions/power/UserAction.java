@@ -3,10 +3,8 @@
  */
 package net.firecoder.test.actions.power;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.firecoder.test.actions.expression.ExpressionAction;
+import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.UserManager;
 import net.firecoder.test.pojo.UserPojo;
 
@@ -24,13 +22,16 @@ import com.opensymphony.xwork2.ActionSupport;
  * create: 2011-7-16
  */
 @ParentPackage("json-default")
-public class UserAction extends ActionSupport {
+public class UserAction extends ActionSupport{
 	private final Logger log = Logger.getLogger(ExpressionAction.class);
 	
 	private String loginName;
-	private UserManager userManager;
+	private String realName;
+	private String password;
 	private String jsonChannel;
 	private String message;
+	
+	private UserManager userManager;
 	
 	@Action(value="login", 
 			results= {
@@ -38,23 +39,45 @@ public class UserAction extends ActionSupport {
 				@Result(name="error", type="json")}
 		)
 	public String executeLogin() {
-		UserPojo pojo = userManager.getUser(loginName);
-		if (pojo == null) {
-			message = getText("login.error", new String[] {loginName});
-			return ERROR;
-		}
+		UserPojo pojo = null;
 		
 		try {
+			pojo = userManager.getUser(loginName);
+			if (pojo == null) {
+				message = getText("login.error", new String[] {loginName});
+				return ERROR;
+			}
 			jsonChannel = JSONUtil.serialize(pojo);
-		} catch (JSONException e) {
-			e.printStackTrace();
+		} catch (BeanException ex) {
+			message = ex.getMessage();
+			return ERROR;
+		} catch (JSONException ex) {
+			message = ex.getMessage();
+			return ERROR;
 		}
 		
 		return SUCCESS;
 	}
-
-	public void setLoginName(String loginName) {
-		this.loginName = loginName;
+	
+	@Action(value="register",
+		results= {
+			@Result(name="success", type="json"),
+			@Result(name="error", type="json")
+		}
+	)
+	public String registerUser() {
+		UserPojo user = new UserPojo();
+		user.setLoginName(loginName);
+		user.setRealName(realName);
+		user.setPassword(password);
+		
+		try {
+			userManager.addUser(user);
+		} catch (BeanException ex) {
+			message = ex.getMessage();
+			return ERROR;
+		}
+		return SUCCESS;
 	}
 	
 	public String getJsonChannel() {
@@ -67,6 +90,18 @@ public class UserAction extends ActionSupport {
 
 	public String getMessage() {
 		return this.message;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

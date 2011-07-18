@@ -10,5 +10,7 @@ import net.firecoder.test.pojo.UserPojo;
  * create: 2011-7-16
  */
 public interface UserDao {
-	public UserPojo find(String loginName);
+	public UserPojo find(String loginName) throws Exception;
+	
+	public boolean add(UserPojo pojo) throws Exception;
 }

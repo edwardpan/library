@@ -3,6 +3,7 @@
  */
 package net.firecoder.test.beans.impl;
 
+import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.UserManager;
 import net.firecoder.test.dao.UserDao;
 import net.firecoder.test.pojo.UserPojo;
@@ -20,8 +21,25 @@ public class UserManagerImpl implements UserManager {
 	}
 
 	@Override
-	public UserPojo getUser(String loginName) {
-		return userDao.find(loginName);
+	public UserPojo getUser(String loginName) throws BeanException {
+		UserPojo user = null;
+		try{
+			user = userDao.find(loginName);
+		} catch (Exception ex) {
+			throw new BeanException(ex);
+		}
+		return user;
+	}
+
+	@Override
+	public boolean addUser(UserPojo pojo) throws BeanException {
+		boolean success = false;
+		try {
+			success = userDao.add(pojo);
+		} catch (Exception ex) {
+			throw new BeanException(ex);
+		}
+		return success;
 	}
 
 }
