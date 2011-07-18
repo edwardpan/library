@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<function-configuration>
+	<!-- 系统函数默认配置 -->
+	<bean class="org.wltea.expression.function.SystemFunctions">
+		<function name="CONTAINS" method="contains">
+			<parameter-type>java.lang.String</parameter-type>
+			<parameter-type>java.lang.String</parameter-type>
+		</function>
+		<function name="STARTSWITH" method="startsWith">
+			<parameter-type>java.lang.String</parameter-type>
+			<parameter-type>java.lang.String</parameter-type>
+		</function>
+		<function name="ENDSWITH" method="endsWith">
+			<parameter-type>java.lang.String</parameter-type>
+			<parameter-type>java.lang.String</parameter-type>
+		</function>
+		<function name="CALCDATE" method="calcDate">
+			<parameter-type>java.util.Date</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+			<parameter-type>int</parameter-type>
+		</function>
+		<function name="SYSDATE" method="sysDate" />
+		<function name="DAYEQUALS" method="dayEquals">
+			<parameter-type>java.util.Date</parameter-type>
+			<parameter-type>java.util.Date</parameter-type>
+		</function>
+	</bean>
+	
+	<!-- 用户函数配置  -->
+	<bean class="net.firecoder.expressionhelper.functions.DateFunctions">
+		<function name="dateToNewFormat" method="convertDateFormat">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要转换的日期时间 -->
+			<parameter-type>java.lang.String</parameter-type><!-- 需要转换的日期时间的旧格式 -->
+			<parameter-type>java.lang.String</parameter-type><!-- 需要转换的日期时间的新格式 -->
+		</function>
+		<function name="stringToDate" method="convertStrToDate">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要解析的日期时间 -->
+		</function>
+		<function name="dateToString" method="convertDateToString">
+			<parameter-type>java.util.Date</parameter-type>
+			<parameter-type>java.lang.String</parameter-type><!-- 需要输出的日期时间的格式 -->
+		</function>
+	</bean>
+	<bean class="net.firecoder.expressionhelper.functions.StringFunctions">
+		<function name="strToReplace" method="replace">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要处理替换操作的字符串 -->
+			<parameter-type>java.lang.String</parameter-type><!-- 需要被替换的值 -->
+			<parameter-type>java.lang.String</parameter-type><!-- 被替换部份的新值 -->
+		</function>
+		<function name="strToReplaceFirst" method="replaceFirst">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要处理替换操作的字符串 -->
+			<parameter-type>java.lang.String</parameter-type><!-- 需要被替换的值 -->
+			<parameter-type>java.lang.String</parameter-type><!-- 被替换部份的新值 -->
+		</function>
+		<function name="strToTrim" method="trim">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要去掉空格的字符串 -->
+		</function>
+		<function name="strToSub" method="substring">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要截取的字符串 -->
+			<parameter-type>int</parameter-type><!-- 开始截取的索引，从0开始 -->
+			<parameter-type>int</parameter-type><!-- 结束截取的索引，从0开始 -->
+		</function>
+		<function name="strToLowerCase" method="toLowerCase">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要转换的字符串 -->
+		</function>
+		<function name="strToUpperCase" method="toUpperCase">
+			<parameter-type>java.lang.String</parameter-type><!-- 需要转换的字符串 -->
+		</function>
+	</bean>
+	<bean class="net.firecoder.expressionhelper.functions.MathFunctions">
+		<function name="mathToRoundUp" method="roundUp"><!-- 四舍五入函数 -->
+			<parameter-type>double</parameter-type><!-- 需要四舍五入的浮点数 -->
+			<parameter-type>int</parameter-type><!-- 保留的小数位 -->
+		</function>
+	</bean>
+
+</function-configuration>

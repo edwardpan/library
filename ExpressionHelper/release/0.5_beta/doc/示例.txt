@@ -1,0 +1,14 @@
+// 定义表达式字符串
+String exp = "今天的日期为：[EXP]$dateToString([2011-03-23], \"yyyyMMdd\") + \"。  \" + other[/EXP]";
+// 为其中的变量设置值
+List<Variable> variables = new ArrayList<Variable>();
+variables.add(new Variable("other", "3月份快结束了。"));
+
+// 实例化表达式帮助类
+ExpressionHelper helper = ExpressionHelper.getInstance();
+helper.setFullExpStr(exp);// 传入表达式
+helper.setVariables(variables);// 传入变量值
+String result = helper.executeFullStr();// 执行
+
+
+输出：今天的日期为：20110323。  3月份快结束了。

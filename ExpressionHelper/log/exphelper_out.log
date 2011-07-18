@@ -1,0 +1,98 @@
+[2011/03/25-10:12:10]  INFO DateFunctionsTest:28 - 日志输出
+[2011/03/25-10:13:02]  INFO DateFunctionsTest:28 - 日志输出
+[2011/03/25-10:13:13] DEBUG DateFunctionsTest:28 - 日志输出
+[2011/03/25-10:14:49] DEBUG DateFunctionsTest:28 - 日志输出
+[2011/03/25-11:35:34] DEBUG DateFunctions:71 - 任意日期格式转换函数执行失败：null。到格式：yyyy/MM/dd
+[2011/03/25-11:35:34] DEBUG DateFunctionsTest:28 - 日志输出
+[2011/03/25-12:40:47] DEBUG DateFunctionsTest:28 - 日志输出
+[2011/03/25-14:24:59] DEBUG DateFunctions:46 - 开始识别旧日期时间格式
+[2011/03/25-14:24:59] DEBUG DateFunctions:49 - 开始将日期时间对象转换为新格式
+[2011/03/25-14:24:59] DEBUG DateFunctionsTest:28 - 日志输出
+[2011/03/25-14:26:02] DEBUG DateFunctions:46 - 开始识别旧日期时间格式
+[2011/03/25-14:26:02] DEBUG DateFunctions:49 - 开始将日期时间对象转换为新格式
+[2011/03/25-14:26:18] DEBUG DateFunctions:46 - 开始识别旧日期时间格式
+[2011/03/25-14:26:18] DEBUG DateFunctions:49 - 开始将日期时间对象转换为新格式
+[2011/03/25-14:26:59] DEBUG DateFunctions:46 - 开始识别旧日期时间格式
+[2011/03/25-14:26:59] DEBUG DateFunctions:49 - 开始将日期时间对象转换为新格式
+[2011/03/25-14:27:18] DEBUG DateFunctions:46 - 开始识别旧日期时间格式
+[2011/03/25-14:27:18] DEBUG DateFunctions:49 - 开始将日期时间对象转换为新格式
+2011/03/25-14:28:26 com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG 开始识别旧日期时间格式
+2011/03/25-14:28:26 com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG 开始将日期时间对象转换为新格式
+2011-03-25 14:28:40 com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG 开始识别旧日期时间格式
+2011-03-25 14:28:40 com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG 开始将日期时间对象转换为新格式
+2011-03-25 14:28:59 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG 开始识别旧日期时间格式
+2011-03-25 14:28:59 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG 开始将日期时间对象转换为新格式
+2011-03-25 14:29:29 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:29:29 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:31:40 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:31:40 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:31:45 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:31:45 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:31:50 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:31:50 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:31:57 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:31:57 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:32:03 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:32:03 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:32:30 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:32:30 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:32:30 - com.woobsoft.expressionhelper.functions.DateFunctions:51 
+ INFO - 测试日志
+2011-03-25 14:32:46 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:32:46 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:32:46 - com.woobsoft.expressionhelper.functions.DateFunctions:51 
+ INFO - 测试日志
+2011-03-25 14:32:55 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:32:55 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:32:55 - com.woobsoft.expressionhelper.functions.DateFunctions:51 
+ INFO - 测试日志
+2011-03-25 14:33:34 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:33:34 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:33:34 - com.woobsoft.expressionhelper.functions.DateFunctions:51 
+INFO  - 测试日志
+2011-03-25 14:33:43.607 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:33:43.607 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-03-25 14:33:43.607 - com.woobsoft.expressionhelper.functions.DateFunctions:51 
+INFO  - 测试日志
+2011-03-25 14:48:57.691 - com.woobsoft.expressionhelper.functions.DateFunctions:46 
+DEBUG - 开始识别旧日期时间格式
+2011-03-25 14:48:57.691 - com.woobsoft.expressionhelper.functions.DateFunctions:49 
+DEBUG - 开始将日期时间对象转换为新格式
+2011-07-18 16:39:43.375 - com.woobsoft.expressionhelper.functions.DateFunctionsTest:26 
+INFO  - 日志输出测试
+2011-07-18 16:43:37.244 - net.firecoder.expressionhelper.functions.DateFunctionsTest:26 
+INFO  - 日志输出测试
+2011-07-18 16:43:52.322 - net.firecoder.expressionhelper.functions.DateFunctionsTest:26 
+INFO  - 日志输出测试
+2011-07-18 16:44:07.134 - net.firecoder.expressionhelper.functions.DateFunctionsTest:26 
+INFO  - 日志输出测试
+2011-07-18 16:45:12.384 - net.firecoder.expressionhelper.functions.DateFunctionsTest:26 
+INFO  - 日志输出测试
