@@ -1,4 +1,4 @@
-﻿create database firecoder;
+create database firecoder;
 
 use firecoder;
 create table if not exists User(
@@ -15,9 +15,32 @@ insert into User(loginname, realname, password) values('panchao', '潘超', 'pan
 
 select * from user;
 
-delete from user where id in (25,26,27,28)
+delete from user where id in (25,26,27,28);
 
 begin;
 insert into User(loginname, realname, password) values('pan','pan','pan');
 
 rollback;
+
+
+create table if not exists Formula(
+    id int auto_increment primary key,
+    expression varchar(1000),
+    isSetScale varchar(100) default 'Y',
+    scale int default 4,
+    resultUnit varchar(100)
+);
+
+create table if not exists FormulaElement(
+    id int auto_increment primary key,
+    formulaId int not null,
+    name varchar(100),
+    value double,
+    valueUnit varchar(100),
+    dataType varchar(100),
+    writable varchar(10) default 'Y',
+    isFinal varchar(10) default 'N',
+    minVal double,
+    maxVal double
+);
+

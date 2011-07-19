@@ -6,8 +6,12 @@
        
 	<bean id="strTest" class="net.firecoder.test.beans.StringTest" />
     
-    <bean id="userManager" class="net.firecoder.test.beans.impl.UserManagerImpl">
+    <bean id="userManager" class="net.firecoder.test.beans.user.impl.UserManagerImpl">
     	<property name="userDao" ref="userDao"/>
+    </bean>
+    
+    <bean id="formulaManager" class="net.firecoder.test.beans.formula.impl.FormulaManagerImpl">
+    	<property name="formulaDao" ref="formulaDao"/>
     </bean>
     
 </beans>

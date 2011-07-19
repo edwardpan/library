@@ -22,6 +22,8 @@
         <property name="annotatedClasses">    
 			<list>
 				<value>net.firecoder.test.pojo.UserPojo</value>
+				<value>net.firecoder.test.pojo.FormulaPojo</value>
+				<value>net.firecoder.test.pojo.FormulaElementPojo</value>
 			</list>
      	</property>
     </bean>
