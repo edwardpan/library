@@ -5,7 +5,7 @@ package net.firecoder.test.actions.power;
 
 import net.firecoder.test.actions.expression.ExpressionAction;
 import net.firecoder.test.beans.BeanException;
-import net.firecoder.test.beans.UserManager;
+import net.firecoder.test.beans.user.UserManager;
 import net.firecoder.test.pojo.UserPojo;
 
 import org.apache.log4j.Logger;

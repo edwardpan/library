@@ -17,39 +17,37 @@ import javax.persistence.Table;
 @Entity
 @Table(name="User")
 public class UserPojo {
-	private int id;
-	private String loginName;
-	private String realName;
-	private String password;
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//@GenericGenerator(name="increment", strategy="increment")
 	@Column(name="id")
+	private int id;
+	@Column(name="loginName")
+	private String loginName;
+	@Column(name="realName")
+	private String realName;
+	@Column(name="password")
+	private String password;
+	
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	@Column(name="loginName")
 	public String getLoginName() {
 		return loginName;
 	}
 	public void setLoginName(String loginName) {
 		this.loginName = loginName;
 	}
-	
-	@Column(name="realName")
 	public String getRealName() {
 		return realName;
 	}
 	public void setRealName(String realName) {
 		this.realName = realName;
 	}
-	
-	@Column(name="password")
 	public String getPassword() {
 		return password;
 	}

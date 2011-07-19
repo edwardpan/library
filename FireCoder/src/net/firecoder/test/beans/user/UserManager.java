@@ -1,8 +1,9 @@
 /* UserManager.java
  * project: FireCoder
  */
-package net.firecoder.test.beans;
+package net.firecoder.test.beans.user;
 
+import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.pojo.UserPojo;
 
 /**
