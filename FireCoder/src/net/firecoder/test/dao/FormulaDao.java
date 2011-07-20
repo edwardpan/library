@@ -11,7 +11,7 @@ import net.firecoder.test.pojo.FormulaPojo;
  * @author ≈À≥¨
  * create: 2011-7-19
  */
-public interface FormulaDao {
+public interface FormulaDao<T> extends Dao<FormulaPojo> {
 	public void addFormula(FormulaPojo pojo) throws Exception;
 	
 	public List<FormulaPojo> listFormula() throws Exception;

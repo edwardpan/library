@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -40,14 +41,16 @@ public class FormulaElementPojo {
 	private BigDecimal minVal;
 	@Column(name="maxVal")
 	private BigDecimal maxVal;
-	@ManyToOne
-	private FormulaPojo formula;
+	//@ManyToOne(targetEntity=FormulaPojo.class)
+	//@JoinColumn(name="formulaId", nullable=false, updatable=false)
+	//private FormulaPojo formula;
+	private int formulaId;
 	
-	public FormulaPojo getFormula() {
-		return formula;
+	public int getFormulaId() {
+		return formulaId;
 	}
-	public void setFormula(FormulaPojo formula) {
-		this.formula = formula;
+	public void setFormulaId(int formulaId) {
+		this.formulaId = formulaId;
 	}
 	public int getId() {
 		return id;

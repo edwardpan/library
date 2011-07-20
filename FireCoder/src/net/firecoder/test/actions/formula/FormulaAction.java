@@ -3,10 +3,9 @@
  */
 package net.firecoder.test.actions.formula;
 
-import java.util.List;
-
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
+import net.firecoder.test.dao.Pagination;
 import net.firecoder.test.pojo.FormulaPojo;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -21,9 +20,10 @@ import com.opensymphony.xwork2.ModelDriven;
  * create: 2011-7-19
  */
 @ParentPackage("json-default")
-public class AddAction extends ActionSupport implements ModelDriven<FormulaPojo> {
+public class FormulaAction extends ActionSupport implements ModelDriven<FormulaPojo> {
 	
 	private FormulaManager formulaManager;
+	
 	private FormulaPojo formula;
 	
 	@Action(value="add",
@@ -49,5 +49,5 @@ public class AddAction extends ActionSupport implements ModelDriven<FormulaPojo>
 	public FormulaPojo getModel() {
 		return formula;
 	}
-
+	
 }

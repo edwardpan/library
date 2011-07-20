@@ -12,7 +12,7 @@
 		<property name="userManager" ref="userManager"/>
 	</bean>
 	
-	<bean id="addAction" class="net.firecoder.test.actions.formula.AddAction">
+	<bean id="formulaAction" class="net.firecoder.test.actions.formula.FormulaAction">
 		<property name="formulaManager" ref="formulaManager"/>
 	</bean>
 	<bean id="listAction" class="net.firecoder.test.actions.formula.ListAction">

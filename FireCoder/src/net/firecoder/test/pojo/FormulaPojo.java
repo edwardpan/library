@@ -5,6 +5,7 @@ package net.firecoder.test.pojo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,8 +31,8 @@ public class FormulaPojo {
 	private String isSetScale;
 	@Column(name="scale")
 	private int scale;
-	@OneToMany
-	private List<FormulaElementPojo> formulaElement;
+	//@OneToMany(targetEntity=FormulaElementPojo.class, cascade=CascadeType.ALL, mappedBy="formula")
+	//private List<FormulaElementPojo> formulaElement;
 	
 	
 	public int getId() {
@@ -57,12 +58,6 @@ public class FormulaPojo {
 	}
 	public void setScale(int scale) {
 		this.scale = scale;
-	}
-	public List<FormulaElementPojo> getFormulaElement() {
-		return formulaElement;
-	}
-	public void setFormulaElement(List<FormulaElementPojo> formulaElement) {
-		this.formulaElement = formulaElement;
 	}
 	
 }

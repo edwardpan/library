@@ -5,6 +5,7 @@ import java.util.List;
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
 import net.firecoder.test.dao.FormulaDao;
+import net.firecoder.test.dao.Pagination;
 import net.firecoder.test.pojo.FormulaPojo;
 
 public class FormulaManagerImpl implements FormulaManager {
@@ -25,14 +26,14 @@ public class FormulaManagerImpl implements FormulaManager {
 	}
 
 	@Override
-	public List<FormulaPojo> listFormulas() throws BeanException {
-		List<FormulaPojo> list = null;
+	public Pagination<FormulaPojo> listFormulas(int startIndex, int pageSize) throws BeanException {
+		Pagination<FormulaPojo> page = null;
 		try {
-			list =  formulaDao.listFormula();
-		} catch (Exception ex) {
-			throw new BeanException(ex);
+			page = formulaDao.findAll(startIndex, pageSize);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return list;
+		return page;
 	}
 
 }

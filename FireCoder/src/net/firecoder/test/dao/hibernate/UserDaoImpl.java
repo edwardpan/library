@@ -5,6 +5,7 @@ package net.firecoder.test.dao.hibernate;
 
 import java.util.List;
 
+import net.firecoder.test.dao.Pagination;
 import net.firecoder.test.dao.UserDao;
 import net.firecoder.test.pojo.UserPojo;
 
@@ -16,7 +17,7 @@ import org.hibernate.Session;
  * @author ≈À≥¨
  * create: 2011-7-16
  */
-public class UserDaoImpl extends HibernateDao implements UserDao {
+public class UserDaoImpl extends HibernateDao<UserPojo> implements UserDao {
 	
 	@Override
 	public UserPojo find(String loginName) throws Exception {
@@ -39,5 +40,10 @@ public class UserDaoImpl extends HibernateDao implements UserDao {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(pojo);
 		return true;
+	}
+
+	@Override
+	public Pagination<UserPojo> findAll(int startIndex, int pageSize) throws Exception {
+		return null;
 	}
 }
