@@ -44,6 +44,7 @@ public class FormulaElementPojo {
 	//@ManyToOne(targetEntity=FormulaPojo.class)
 	//@JoinColumn(name="formulaId", nullable=false, updatable=false)
 	//private FormulaPojo formula;
+	@Column(name="formulaId")
 	private int formulaId;
 	
 	public int getFormulaId() {

@@ -33,7 +33,8 @@ public class FormulaPojo {
 	private int scale;
 	//@OneToMany(targetEntity=FormulaElementPojo.class, cascade=CascadeType.ALL, mappedBy="formula")
 	//private List<FormulaElementPojo> formulaElement;
-	
+	@Column(name="resultUnit")
+	private String resultUnit;
 	
 	public int getId() {
 		return id;
@@ -58,6 +59,12 @@ public class FormulaPojo {
 	}
 	public void setScale(int scale) {
 		this.scale = scale;
+	}
+	public String getResultUnit() {
+		return resultUnit;
+	}
+	public void setResultUnit(String resultUnit) {
+		this.resultUnit = resultUnit;
 	}
 	
 }

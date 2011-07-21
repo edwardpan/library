@@ -17,9 +17,35 @@ public interface Dao<T> {
 	 */
 	public Pagination<T> findAll(int startIndex, int pageSize) throws Exception;
 	
+	/**
+	 * 新增数据
+	 * @param data
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean add(T data) throws Exception;
 	
-	public boolean modify(T data) throws Exception;
+	/**
+	 * 修改数据，对象中的编号将被作为修改条件
+	 * @param data
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean update(T data) throws Exception;
 	
+	/**
+	 * 删除数据，对象中的编号将被作为删除条件
+	 * @param data
+	 * @return
+	 * @throws Exception
+	 */
 	public boolean delete(T data) throws Exception;
+	
+	/**
+	 * 获取数据，对象中的编号作为获取条件
+	 * @param data
+	 * @return
+	 * @throws Exception
+	 */
+	public T get(T data) throws Exception;
 }

@@ -8,4 +8,8 @@ public interface FormulaManager {
 	public void addFormula(FormulaPojo formula) throws BeanException;
 	
 	public Pagination<FormulaPojo> listFormulas(int startIndex, int pageSize) throws BeanException;
+	
+	public void deleteFormulaById(FormulaPojo formula) throws BeanException;
+	
+	public void modifyFormulaById(FormulaPojo formula) throws BeanException;
 }

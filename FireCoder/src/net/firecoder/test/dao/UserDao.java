@@ -9,8 +9,7 @@ import net.firecoder.test.pojo.UserPojo;
  * @author ≈À≥¨
  * create: 2011-7-16
  */
-public interface UserDao {
+public interface UserDao extends Dao<UserPojo> {
 	public UserPojo find(String loginName) throws Exception;
 	
-	public boolean add(UserPojo pojo) throws Exception;
 }

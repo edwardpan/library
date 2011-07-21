@@ -9,7 +9,6 @@ import net.firecoder.test.dao.Pagination;
 import net.firecoder.test.dao.UserDao;
 import net.firecoder.test.pojo.UserPojo;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -32,14 +31,6 @@ public class UserDaoImpl extends HibernateDao<UserPojo> implements UserDao {
 			pojo = (UserPojo) list.get(0);
 		}
 		return pojo;
-	}
-
-	@Override
-	public boolean add(UserPojo pojo) throws Exception {
-		// 使用事务中已经打开的Session，由此才能发挥Spring中事务管理的作用
-		Session session = sessionFactory.getCurrentSession();
-		session.save(pojo);
-		return true;
 	}
 
 	@Override

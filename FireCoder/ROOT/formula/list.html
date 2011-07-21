@@ -16,6 +16,7 @@
 	<script type="text/javascript">
 	$.ajaxSetup({cache:false,type:"POST"});
 	var dataGrid = null;
+	var elDataGrid = null;
 	$(document).ready(function(){
 		dataGrid = $('#dataGrid').dataTable( {
 			"oLanguage": {//汉化  
@@ -54,15 +55,78 @@
 				{ "mDataProp": "id" },
 				{ "mDataProp": "expression" },
 				{ "mDataProp": "isSetScale" },
-				{ "mDataProp": "scale" }
+				{ "mDataProp": "scale" },
+				{ "mDataProp": "resultUnit" }
 			]
 		} );
+		elDataGrid = $("#elDataGrid").dataTable({
+			"oLanguage": {//汉化  
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "",
+                "sInfo": "当前数据为从第 _START_ 到第 _END_ 条数据；总共有 _TOTAL_ 条记录",
+                "sSearch": "搜索",
+                "sInfoFiltered": "(从 _MAX_ 条数据中过滤)",
+                "sInfoEmtpy": "没有数据",
+                "sProcessing": "正在加载数据...",
+                "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "前页",
+                    "sNext": "后页",
+                    "sLast": "尾页"
+                }
+            },
+			"bJQueryUI": true,
+			"bPaginate": false,
+			"bLengthChange": true,
+			"bInfo": false,
+			"bFilter": false,
+			"bAutoWidth": false,
+			"bSort": false
+		});
 	});
 	$(function() {
 		$( "input:button, input:submit, button", ".jQButton" ).button();
 	});
-	function pk(){
-		$("#datepk").datepicker();
+	function showAdd(){
+		$("#addDialog").dialog({ 
+			height: 400,
+			width: 700,
+			buttons: [
+				{
+					text: "增加",
+			    	click: function(){
+						var param = $("#addForm").serialize();
+						$.getJSON("add", param, function(data){
+							$("#dialog").attr("title", "提示信息");
+							$("#dialog").html("<p>添加成功</p>");
+							$("#dialog").dialog();
+						});
+					}
+				},
+				{
+					text: "取消",
+			    	click: function(){
+			    		$(this).dialog("close");
+			    	}
+				}
+			]
+		});
+	}
+	function addNewEl(){
+		elDataGrid.fnAddData( [
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+			"<div class='jQButton'><input type='button' value='删除' onclick='delEl()'/></div>" ]);
+	}
+	function delEl(){
+		
 	}
 	</script>
 	<style type="text/css">
@@ -73,9 +137,59 @@
   </head>
   
   <body>
+  	<div id="dialog" style="z-index:-1;display:none">
+	</div>
+  	<div id="addDialog" title="添加公式" style="z-index:-2;display:none">
+		<form id="addForm" >
+			<table boder="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td>算术公式：</td>
+					<td><input type="text" id="expression" name="expression" value=""/></td>
+				</tr>
+				<tr>
+					<td>结果是否取精度：</td>
+					<td><input type="text" id="isSetScale" name="isSetScale" value=""/></td>
+				</tr>
+				<tr>
+					<td>精度长度：</td>
+					<td><input type="text" id="scale" name="scale" value=""/></td>
+				</tr>
+				<tr>
+					<td>结果单位：</td>
+					<td><input type="text" id="resultUnit" name="resultUnit" value=""/></td>
+				</tr>
+			</table>
+			<br/>
+			<table id="elDataGrid">
+				<thead>
+					<tr>
+						<td>编号</td>
+						<td>代入元素</td>
+						<td>默认值</td>
+						<td>元素单位</td>
+						<td>数据类别</td>
+						<td>是否可编辑</td>
+						<td>是否标准值</td>
+						<td>可填最小范围</td>
+						<td>可填最大范围</td>
+						<td>操作</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+				<tfoot>
+					<tr><td colspan="10" align="center">
+						<div class="jQButton">
+							<input type="button" id="addNewElBtn" value="点击新增元素" onclick="addNewEl()"/>
+						</div>
+					</td></tr>
+				</tfoot>
+			</table>
+		</form>
+	</div>
   	<div class="jQButton">
-    <input type="button" value="刷新" onclick="dataGrid.fnDraw()"/>
-    <input type="text" id="datepk" value="" onclick="pk()"/>
+	    <input type="button" id="reloadBtn" value="刷新" onclick="dataGrid.fnDraw()"/>
+	    <input type="button" id="showAddBtn" value="添加" onclick="showAdd()"/>
     </div>
 	<table id="dataGrid" width="100%">
 		<thead>
@@ -84,6 +198,7 @@
 				<td>算术公式</td>
 				<td>是否取精度</td>
 				<td>精度大小</td>
+				<td>结果单位</td>
 			</tr>
 		</thead>
 		<tbody>

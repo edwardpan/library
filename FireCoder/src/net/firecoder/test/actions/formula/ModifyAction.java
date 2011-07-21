@@ -5,7 +5,6 @@ package net.firecoder.test.actions.formula;
 
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
-import net.firecoder.test.dao.Pagination;
 import net.firecoder.test.pojo.FormulaPojo;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -20,20 +19,20 @@ import com.opensymphony.xwork2.ModelDriven;
  * create: 2011-7-19
  */
 @ParentPackage("json-default")
-public class FormulaAction extends ActionSupport implements ModelDriven<FormulaPojo> {
+public class ModifyAction extends ActionSupport implements ModelDriven<FormulaPojo> {
 	
 	private FormulaManager formulaManager;
 	
-	private FormulaPojo formula;
+	private FormulaPojo formula = new FormulaPojo();
 	
-	@Action(value="add",
+	@Action(value="modify",
 		results={
 			@Result(name="success", type="json")
 		}
 	)
 	public String execute() {
 		try {
-			formulaManager.addFormula(formula);
+			formulaManager.modifyFormulaById(formula);
 		} catch (BeanException e) {
 			e.printStackTrace();
 		}
