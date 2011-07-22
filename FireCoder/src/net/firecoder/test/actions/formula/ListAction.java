@@ -3,6 +3,7 @@
  */
 package net.firecoder.test.actions.formula;
 
+import net.firecoder.test.actions.formula.model.JQueryDataTablesList;
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
 import net.firecoder.test.dao.Pagination;
@@ -13,22 +14,17 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 /**
  * @author ≈À≥¨
  * create: 2011-7-20
  */
 @ParentPackage("json-default")
-public class ListAction extends ActionSupport {
+public class ListAction extends ActionSupport implements ModelDriven<JQueryDataTablesList> {
 	private FormulaManager formulaManager;
 
-	private Pagination<FormulaPojo> page;
-	private int	iDisplayStart;
-	private int	iDisplayLength;
-	private String sSearch;
-	private int	iTotalRecords;
-	private int	iTotalDisplayRecords;
-	private String sEcho;
+	private JQueryDataTablesList list = new JQueryDataTablesList();
 
 	@Action(value="list",
 		results={
@@ -37,9 +33,10 @@ public class ListAction extends ActionSupport {
 	)
 	public String listFormula() {
 		try {
-			page = formulaManager.listFormulas(iDisplayStart, iDisplayLength);
-			iTotalRecords = (int)page.getTotalCount();
-			iTotalDisplayRecords = (int)page.getTotalCount();
+			list.setPage(
+					formulaManager.listFormulas(list.getIDisplayStart(), list.getIDisplayLength()));
+			list.setITotalRecords((int)list.getPage().getTotalCount());
+			list.setITotalDisplayRecords((int)list.getPage().getTotalCount());
 		} catch (BeanException e) {
 			e.printStackTrace();
 		}
@@ -51,40 +48,9 @@ public class ListAction extends ActionSupport {
 		this.formulaManager = formulaManager;
 	}
 
-	public Pagination<FormulaPojo> getPage() {
-		return page;
+	@Override
+	public JQueryDataTablesList getModel() {
+		return list;
 	}
 
-	public void setPage(Pagination<FormulaPojo> page) {
-		this.page = page;
-	}
-
-	public void setIDisplayStart(int displayStart) {
-		iDisplayStart = displayStart;
-	}
-
-	public void setIDisplayLength(int displayLength) {
-		iDisplayLength = displayLength;
-	}
-
-	public void setSSearch(String search) {
-		sSearch = search;
-	}
-
-	public int getITotalRecords() {
-		return iTotalRecords;
-	}
-
-	public int getITotalDisplayRecords() {
-		return iTotalDisplayRecords;
-	}
-
-	public String getSEcho() {
-		return sEcho;
-	}
-
-	public void setSEcho(String echo) {
-		sEcho = echo;
-	}
-	
 }

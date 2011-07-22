@@ -3,7 +3,7 @@
  */
 package net.firecoder.test.actions.formula;
 
-import net.firecoder.test.beans.BeanException;
+import net.firecoder.test.actions.formula.model.JQueryDataTablesEdit;
 import net.firecoder.test.beans.formula.FormulaManager;
 import net.firecoder.test.pojo.FormulaPojo;
 
@@ -19,34 +19,30 @@ import com.opensymphony.xwork2.ModelDriven;
  * create: 2011-7-19
  */
 @ParentPackage("json-default")
-public class ModifyAction extends ActionSupport implements ModelDriven<FormulaPojo> {
+public class ModifyValueAction extends ActionSupport implements ModelDriven<JQueryDataTablesEdit> {
 	
 	private FormulaManager formulaManager;
 	
-	private FormulaPojo formula = new FormulaPojo();
-	
-	@Action(value="modify",
-		results={
-			@Result(name="success", type="json")
-		}
-	)
-	public String modfiy() {
-		try {
-			formulaManager.modifyFormulaById(formula);
-		} catch (BeanException e) {
-			e.printStackTrace();
-		}
-		
-		return SUCCESS;
-	}
+	private JQueryDataTablesEdit editor = new JQueryDataTablesEdit();
+    
+    @Action(value="modifyValue",
+    	results={
+    		@Result(name="success", type="json")
+    	}
+    )
+    public String modifyValue() {
+    	
+    	
+    	return SUCCESS;
+    }
 	
 	public void setFormulaManager(FormulaManager formulaManager) {
 		this.formulaManager = formulaManager;
 	}
 
 	@Override
-	public FormulaPojo getModel() {
-		return formula;
+	public JQueryDataTablesEdit getModel() {
+		return editor;
 	}
 	
 }
