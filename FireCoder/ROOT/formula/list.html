@@ -52,6 +52,7 @@
 			//"bFilter": false,
 			//"bLengthChange": true,
 			"bSort": false,
+			"bAutoWidth": false,
 			"bProcessing": true,
 			"bServerSide": true,
 			"sPaginationType": "full_numbers",
@@ -65,17 +66,17 @@
 				});
 			},*/
 			"aoColumns": [
-				{ "sName": "id", "mDataProp": "id", "bVisible":false },
-				{ "sName": "expression", "mDataProp": "expression"},
-				{ "sName": "isSetScale", "mDataProp": "isSetScale" },
-				{ "sName": "scale", "mDataProp": "scale" },
-				{ "sName": "resultUnit", "mDataProp": "resultUnit" }
+				{ "sName":"id", "mDataProp":"id", "bVisible":false },
+				{ "sName":"expression", "mDataProp":"expression", "sWidth":"60%" },
+				{ "sName":"isSetScale", "mDataProp":"isSetScale", "sWidth":"10%" },
+				{ "sName":"scale", "mDataProp":"scale", "sType":"numeric", "sWidth":"10%" },
+				{ "sName":"resultUnit", "mDataProp":"resultUnit", "sWidth":"20%" }
 			]
 		} ).makeEditable({
 			sAddURL: "add",
 			sUpdateURL: "modifyValue",
 			sDeleteURL: "delete",
-			fnOnAdded: function(status){
+			/*fnOnAdded: function(status){
 				//jAlert("增加计算公式完成. 状态 - " + status, "增加完成");
 				if (status == "success"){
 					$("#lblError").append("增加计算公式成功");
@@ -83,6 +84,7 @@
 					$("#lblError").append("增加计算公式失败");
 				}
 				$("#lblError").show();
+				dataGrid.fnDraw();
 			},
 			fnOnEdited: function(status){ 	
 				if (status == "success"){
@@ -91,6 +93,7 @@
 					$("#lblError").append("编辑失败");
 				}
 				$("#lblError").show();
+				dataGrid.fnDraw();
 			},
 			fnOnDeleted: function(status){
 				if (status == "success"){
@@ -99,23 +102,11 @@
 					$("#lblError").append("删除失败");
 				}
 				$("#lblError").show();
-			},
-			fnShowError: function (message, action) {
-                switch (action) {
-                    case "update":
-                        $("#lblError").append(message);
-						$("#lblError").show();
-                        break;
-                    case "delete":
-                        $("#lblError").append(message);
-						$("#lblError").show();
-                        break;
-                    case "add":
-                        $("#lblError").append(message);
-						$("#lblError").show();
-                        break;
-                }
-            },
+				dataGrid.fnDraw();
+			},*/
+			fnOnDeleting: function(tr, id, fnDeleteRow) {
+	            return confirm("确认删除该数据？"); ;
+	        },
 			"aoColumns": [
 				{
 					indicator:'保存算术公式...',
@@ -146,7 +137,8 @@
 					loadtext:'加载...',
 					type:'text',
 					submit:'保存',
-					maxlength:100}
+					maxlength:100,
+					placeholder:"点击编辑" }
 			],
 			sAddDeleteToolbarSelector: ".dataTables_length",
 			sAddNewRowButtonId: "addFormulaBtn",
@@ -178,7 +170,8 @@
 			oAddNewRowFormOptions: {
 				title: '添加新的计算元素',
 				show: "blind",
-				hide: "blind"
+				hide: "blind",
+				width: 600
 			}
 		});
 		elDataGrid = $("#elDataGrid").dataTable({
@@ -203,10 +196,32 @@
 			"bInfo": false,
 			"bFilter": false,
 			"bAutoWidth": false,
-			"bSort": false
+			"bSort": false,
+			"aoColumns": [
+				{ "sWidth":"10%" },
+				{ "sWidth":"15%" },
+				{ "sWidth":"15%" },
+				{ "sWidth":"10%" },
+				{ "sWidth":"10%" },
+				{ "sWidth":"10%" },
+				{ "sWidth":"15%" },
+				{ "sWidth":"15%" }
+			]
 		}).makeEditable({
 			//sUpdateURL: "modifyElement",
-			//sAddURL: "addElement",
+			sAddURL: function(value, settings){
+				value = "";
+				elDataGrid.fnAddData( [
+					"1",
+					"2",
+					"3",
+					"4",
+					"5",
+					"6",
+					"7",
+					"8"] );
+                return(value);
+			},
 			//sDeleteURL: "deleteElement",
 			sAddDeleteToolbarSelector: ".dataTables_length",
 			sAddNewRowButtonId: "addFormulaElBtn",

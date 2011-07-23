@@ -52,4 +52,15 @@ public class FormulaManagerImpl implements FormulaManager {
 		}
 	}
 
+	@Override
+	public FormulaPojo getFormulaById(FormulaPojo formula) throws BeanException {
+		FormulaPojo pojo = null;
+		try {
+			pojo = formulaDao.get(formula);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return pojo;
+	}
+
 }

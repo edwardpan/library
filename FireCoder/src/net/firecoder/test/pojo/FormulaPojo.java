@@ -42,6 +42,9 @@ public class FormulaPojo {
 	public void setId(int id) {
 		this.id = id;
 	}
+	public int getDT_RowId() {
+		return id;
+	}
 	public String getExpression() {
 		return expression;
 	}

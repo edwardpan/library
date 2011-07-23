@@ -12,4 +12,6 @@ public interface FormulaManager {
 	public void deleteFormulaById(FormulaPojo formula) throws BeanException;
 	
 	public void modifyFormulaById(FormulaPojo formula) throws BeanException;
+	
+	public FormulaPojo getFormulaById(FormulaPojo formula) throws BeanException;
 }
