@@ -3,7 +3,7 @@
  */
 package net.firecoder.test.actions.formula;
 
-import net.firecoder.test.actions.formula.model.JQueryDataTablesEdit;
+import net.firecoder.test.actions.model.JQueryDataTablesEdit;
 import net.firecoder.test.beans.formula.FormulaManager;
 import net.firecoder.test.pojo.FormulaPojo;
 

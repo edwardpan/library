@@ -45,7 +45,21 @@ create table if not exists FormulaElement(
 );
 
 insert into formula(expression, issetscale, scale, resultunit) values('(4+2)*A','Y',4,'');
-insert into formulaelement(formulaid,name,value,valueUnit,dataType,writable,isfinal,minval,maxval) values(1,'A',0.003,'','double','Y','N','','');
+insert into formulaelement(formulaid,name,value,valueUnit,dataType,writable,isfinal,minval,maxval) values(1,'A',0.003,'','double','Y','N','1','10');
+
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
+insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',4,'');
 
 
 select * from formula;
+
+
+

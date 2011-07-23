@@ -3,7 +3,7 @@
  */
 package net.firecoder.test.actions.formula;
 
-import net.firecoder.test.actions.formula.model.JQueryDataTablesList;
+import net.firecoder.test.actions.model.JQueryDataTablesList;
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
 import net.firecoder.test.dao.Pagination;
@@ -24,7 +24,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class ListAction extends ActionSupport implements ModelDriven<JQueryDataTablesList> {
 	private FormulaManager formulaManager;
 
-	private JQueryDataTablesList list = new JQueryDataTablesList();
+	private JQueryDataTablesList<FormulaPojo> list = new JQueryDataTablesList<FormulaPojo>();
 
 	@Action(value="list",
 		results={
@@ -34,7 +34,7 @@ public class ListAction extends ActionSupport implements ModelDriven<JQueryDataT
 	public String listFormula() {
 		try {
 			list.setPage(
-					formulaManager.listFormulas(list.getIDisplayStart(), list.getIDisplayLength()));
+					formulaManager.listFormulas(list.getiDisplayStart(), list.getiDisplayLength()));
 			list.setITotalRecords((int)list.getPage().getTotalCount());
 			list.setITotalDisplayRecords((int)list.getPage().getTotalCount());
 		} catch (BeanException e) {

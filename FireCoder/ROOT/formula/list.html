@@ -66,7 +66,7 @@
 			},*/
 			"aoColumns": [
 				{ "sName": "id", "mDataProp": "id", "bVisible":false },
-				{ "sName": "expression", "mDataProp": "expression" },
+				{ "sName": "expression", "mDataProp": "expression"},
 				{ "sName": "isSetScale", "mDataProp": "isSetScale" },
 				{ "sName": "scale", "mDataProp": "scale" },
 				{ "sName": "resultUnit", "mDataProp": "resultUnit" }
@@ -77,15 +77,27 @@
 			sDeleteURL: "delete",
 			fnOnAdded: function(status){
 				//jAlert("增加计算公式完成. 状态 - " + status, "增加完成");
-				$("#lblError").append("增加计算公式完成。状态 - " + status);
+				if (status == "success"){
+					$("#lblError").append("增加计算公式成功");
+				} else if (status == "failure"){
+					$("#lblError").append("增加计算公式失败");
+				}
 				$("#lblError").show();
 			},
 			fnOnEdited: function(status){ 	
-				$("#lblError").append("编辑成功。状态 - " + status);
+				if (status == "success"){
+					$("#lblError").append("编辑成功");
+				} else if (status == "failure"){
+					$("#lblError").append("编辑失败");
+				}
 				$("#lblError").show();
 			},
 			fnOnDeleted: function(status){
-				$("#lblError").append("删除成功。状态 - " + status);
+				if (status == "success"){
+					$("#lblError").append("删除成功");
+				} else if (status == "failure"){
+					$("#lblError").append("删除失败");
+				}
 				$("#lblError").show();
 			},
 			fnShowError: function (message, action) {

@@ -1,7 +1,7 @@
 /* DataTableEditor.java
  * project: FireCoder
  */
-package net.firecoder.test.actions.formula.model;
+package net.firecoder.test.actions.model;
 
 /**
  * @author ≈À≥¨
