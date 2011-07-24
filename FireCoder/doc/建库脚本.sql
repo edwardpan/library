@@ -60,6 +60,7 @@ insert into formula(expression, issetscale, scale, resultunit) values('4-2','Y',
 
 
 select * from formula;
+select * from formulaElement;
 
 
 
