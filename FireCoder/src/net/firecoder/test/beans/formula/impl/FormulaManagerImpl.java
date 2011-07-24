@@ -1,5 +1,8 @@
 package net.firecoder.test.beans.formula.impl;
 
+import org.apache.log4j.Logger;
+
+import net.firecoder.test.actions.expression.ExpressionAction;
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
 import net.firecoder.test.dao.Dao;
@@ -8,6 +11,7 @@ import net.firecoder.test.pojo.FormulaPojo;
 
 public class FormulaManagerImpl implements FormulaManager {
 
+	private final Logger log = Logger.getLogger(ExpressionAction.class);
 	private Dao<FormulaPojo> formulaDao;
 	
 	public void setFormulaDao(Dao<FormulaPojo> formulaDao) {
@@ -17,7 +21,8 @@ public class FormulaManagerImpl implements FormulaManager {
 	@Override
 	public void addFormula(FormulaPojo formula) throws BeanException {
 		try {
-			formulaDao.add(formula);
+			String id = formulaDao.add(formula);
+			// TODO 添加算术公式中的计算元素
 		} catch (Exception ex) {
 			throw new BeanException(ex);
 		}

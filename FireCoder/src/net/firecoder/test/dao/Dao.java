@@ -20,10 +20,10 @@ public interface Dao<T> {
 	/**
 	 * 新增数据
 	 * @param data
-	 * @return
+	 * @return 新增数据的ID
 	 * @throws Exception
 	 */
-	public boolean add(T data) throws Exception;
+	public String add(T data) throws Exception;
 	
 	/**
 	 * 修改数据，对象中的编号将被作为修改条件

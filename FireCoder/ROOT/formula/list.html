@@ -13,15 +13,19 @@
 			@import "../jq/datatables/css/table_jui.css";
 			@import "../jq/validation/css/validation.css";
 			@import "../jq/jalert/css/jquery.alerts.css";
+			@import "../jq/message/jquery.message.css";
 			@import "../jq/css/start/jquery-ui-1.8.14.custom.css";
 	</style>
 	<script type="text/javascript" src="../js/KeyTable.js"></script>
 	<script type="text/javascript" src="../jq/jquery-1.6.2.min.js"></script>
 	<script type="text/javascript" src="../jq/jalert/jquery.alerts.js"></script>
+	<script type="text/javascript" src="../jq/message/jquery.message.pack.js"></script>
+	<script type="text/javascript" src="../jq/message/jquery.message.js"></script>
 	<script type="text/javascript" src="../jq/datatables/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="../jq/datatables/jquery.dataTables.editable.js"></script>
 	<script type="text/javascript" src="../jq/jeditable/jquery.jeditable.mini.js"></script>
 	<script type="text/javascript" src="../jq/validation/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="../jq/validation/local/messages_cn.js"></script>
 	<script type="text/javascript" src="../jq/ui/jquery-ui-1.8.14.custom.min.js"></script>
 	<script type="text/javascript" src="../jq/ui/i18n/jquery.ui.datepicker-zh-CN.js"></script>
 	<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>
@@ -76,34 +80,31 @@
 			sAddURL: "add",
 			sUpdateURL: "modifyValue",
 			sDeleteURL: "delete",
-			/*fnOnAdded: function(status){
-				//jAlert("增加计算公式完成. 状态 - " + status, "增加完成");
+			fnOnAdded: function(status){
 				if (status == "success"){
-					$("#lblError").append("增加计算公式成功");
+					$().message("增加计算公式成功");
 				} else if (status == "failure"){
-					$("#lblError").append("增加计算公式失败");
+					$().message("增加计算公式失败");
 				}
-				$("#lblError").show();
+				$().message("增加计算公式成功");
 				dataGrid.fnDraw();
 			},
 			fnOnEdited: function(status){ 	
 				if (status == "success"){
-					$("#lblError").append("编辑成功");
+					$().message("编辑成功");
 				} else if (status == "failure"){
-					$("#lblError").append("编辑失败");
+					$().message("编辑失败");
 				}
-				$("#lblError").show();
 				dataGrid.fnDraw();
 			},
 			fnOnDeleted: function(status){
 				if (status == "success"){
-					$("#lblError").append("删除成功");
+					$().message("删除成功");
 				} else if (status == "failure"){
-					$("#lblError").append("删除失败");
+					$().message("删除失败");
 				}
-				$("#lblError").show();
 				dataGrid.fnDraw();
-			},*/
+			},
 			fnOnDeleting: function(tr, id, fnDeleteRow) {
 	            return confirm("确认删除该数据？"); ;
 	        },
@@ -140,6 +141,7 @@
 					maxlength:100,
 					placeholder:"点击编辑" }
 			],
+			sSelectedRowClass: "row_selected",
 			sAddDeleteToolbarSelector: ".dataTables_length",
 			sAddNewRowButtonId: "addFormulaBtn",
 			sDeleteRowButtonId: "delFormulaBtn",
@@ -168,10 +170,11 @@
 				icons: { primary: 'ui-icon-close' }
 			},
 			oAddNewRowFormOptions: {
-				title: '添加新的计算元素',
+				title: "添加计算公式",
 				show: "blind",
 				hide: "blind",
-				width: 600
+				width: 700,
+				modal: true
 			}
 		});
 		elDataGrid = $("#elDataGrid").dataTable({
@@ -198,65 +201,95 @@
 			"bAutoWidth": false,
 			"bSort": false,
 			"aoColumns": [
-				{ "sWidth":"10%" },
-				{ "sWidth":"15%" },
-				{ "sWidth":"15%" },
-				{ "sWidth":"10%" },
-				{ "sWidth":"10%" },
-				{ "sWidth":"10%" },
-				{ "sWidth":"15%" },
-				{ "sWidth":"15%" }
+				{ 
+					"sWidth":"10%", 
+					fnRender:function(data){
+						return "<input type='text' id='name' name='formulaElList.name' value='" + data.aData[0] + "' size='6'/>";
+					} 
+				}, 
+				{ 
+					"sWidth":"15%", 
+					fnRender:function(data){
+						return "<input type='text' id='value' name='formulaElList.value' value='" + data.aData[1] + "' size='11'/>";
+					} 
+				},
+				{ 
+					"sWidth":"10%", 
+					fnRender:function(data){
+						return "<input type='text' id='valueUnit' name='formulaElList.valueUnit' value='" + data.aData[2] + "' size='6'/>";
+					} 
+				},
+				{ 
+					"sWidth":"10%", 
+					fnRender:function(data){
+						return "<input type='text' id='dataType' name='formulaElList.dataType' value='" + data.aData[3] + "' size='6'/>";
+					} 
+				},
+				{ 
+					"sWidth":"10%", 
+					fnRender:function(data){
+						return "<input type='text' id='writable' name='formulaElList.writable' value='" + data.aData[4] + "' size='6'/>";
+					} 
+				},
+				{ 
+					"sWidth":"10%", 
+					fnRender:function(data){
+						return "<input type='text' id='isFinal' name='formulaElList.isFinal' value='" + data.aData[5] + "' size='6'/>";
+					} 
+				},
+				{ 
+					"sWidth":"10%", 
+					fnRender:function(data){
+						return "<input type='text' id='minVal' name='formulaElList.minVal' value='" + data.aData[6] + "' size='6'/>";
+					} 
+				},
+				{ 
+					"sWidth":"10%", 
+					fnRender:function(data){
+						return "<input type='text' id='maxVal' name='formulaElList.maxVal' value='" + data.aData[7] + "' size='6'/>";
+					} 
+				},
+				{ "sWidth":"10%" }
 			]
-		}).makeEditable({
-			//sUpdateURL: "modifyElement",
-			sAddURL: function(value, settings){
-				value = "";
-				elDataGrid.fnAddData( [
-					"1",
-					"2",
-					"3",
-					"4",
-					"5",
-					"6",
-					"7",
-					"8"] );
-                return(value);
-			},
-			//sDeleteURL: "deleteElement",
-			sAddDeleteToolbarSelector: ".dataTables_length",
-			sAddNewRowButtonId: "addFormulaElBtn",
-			sDeleteRowButtonId: "delFormulaElBtn",
-			sAddNewRowFormId: "addFormulaElForm",
-			sAddNewRowOkButtonId: "addFormulaElOkBtn",
-			sAddNewRowCancelButtonId: "addFormulaElCancelBtn",
-			oAddNewRowButtonOptions: {
-				label: "增加...",
-				icons: { primary: 'ui-icon-plus' }
-			},
-			oDeleteRowButtonOptions: {
-				label: "删除",
-				icons: { primary: 'ui-icon-trash' }
-			},
-			oAddNewRowOkButtonOptions: {
-				label: "确认",
-				icons: { primary: 'ui-icon-check' },
-				name: "action",
-				value: "add-new"
-			},
-			oAddNewRowCancelButtonOptions: { 
-				label: "关闭",
-				"class": "back-class",
-				name: "action",
-				value: "cancel-add",
-				icons: { primary: 'ui-icon-close' }
-			},
-			oAddNewRowFormOptions: {
-				title: '添加新的计算元素',
-				show: "blind",
-				hide: "blind"
-			}
+		});
+		
+		$("#addFormulaElBtn").button();
+		$("#addFormulaElBtn").click(function(){
+			$("#addFormulaElDialog").dialog({
+				modal: true,
+				buttons: [
+					{
+						text: "确认",
+						click: function() {
+							var data = new Array();
+							data.push($("#name").attr("value"));
+							data.push($("#value").attr("value"));
+							data.push($("#valueUnit").attr("value"));
+							data.push($("#dataType").attr("value"));
+							data.push($("#writable").attr("value"));
+							data.push($("#isFinal").attr("value"));
+							data.push($("#minVal").attr("value"));
+							data.push($("#maxVal").attr("value"));
+							data.push("<input type='button' value='删除' onclick='delElRow(this)'/>");
+							elDataGrid.fnAddData(data);
+							$(this).dialog("close");
+						}
+					},
+					{
+						text: "关闭",
+						click: function() {
+							$(this).dialog("close");
+						}
+					}]
+			});
 		});
 	});
+	function delElRow(obj){
+		if (confirm("确认删除？")){
+			row = obj.parentNode.parentNode;
+			elDataGrid.fnDeleteRow(row);
+		}
+	}
 	</script>
 	<style type="text/css">
 	body{
@@ -266,7 +299,7 @@
   </head>
   
   <body>
-  	<label id="lblError" style="display:none" class="error"></label>
+  	<label id="lblError" style="display:none" class="messages"></label>
   	<div>
 	    <input type="button" id="addFormulaBtn"/>
 		<input type="button" id="delFormulaBtn"/>
@@ -288,7 +321,7 @@
 		<table border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td>算术公式：</td>
-				<td><input type="text" id="expression" name="expression" value=""/></td>
+				<td><input type="text" id="expression" name="expression" value="" class="required" title="请输入算术公式！"/></td>
 			</tr>
 			<tr>
 				<td>结果是否取精度：</td>
@@ -308,8 +341,7 @@
 		</table>
 		<br/>
 		<div>
-			<input type="button" id="addFormulaElBtn"/>
-			<input type="button" id="delFormulaElBtn"/>
+			<input type="button" id="addFormulaElBtn" value="增加..."/>
 		</div>
 		<table id="elDataGrid">
 			<thead>
@@ -322,6 +354,7 @@
 					<td>是否标准值</td>
 					<td>可填最小范围</td>
 					<td>可填最大范围</td>
+					<td>操作</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -332,55 +365,50 @@
 			<button id="addFormulaCancelBtn"></button>
 		</div>
 	</form>
-	<form id="addFormulaElForm" action="#">
+	<div id="addFormulaElDialog" title="添加计算元素" style="display:none">
 		<table border="0" cellpadding="0" cellspacing="0">
-			<thead>
-				<tr>
-					<td>代入元素</td>
-					<td><input type="text" id="name" name="name" value=""/></td>
-				</tr>
-				<tr>
-					<td>默认值</td>
-					<td><input type="text" id="value" name="value" value=""/></td>
-				</tr>
-				<tr>
-					<td>元素单位</td>
-					<td><input type="text" id="valueUnit" name="valueUnit" value=""/></td>
-				</tr>
-				<tr>
-					<td>数据类别</td>
-					<td><input type="text" id="dataType" name="dataType" value=""/></td>
-				</tr>
-				<tr>
-					<td>是否可编辑</td>
-					<td><select name="writable" id="writable">
+			<tr>
+				<td>代入元素</td>
+				<td><input type="text" id="name" name="name" value=""/></td>
+			</tr>
+			<tr>
+				<td>默认值</td>
+				<td><input type="text" id="value" name="value" value=""/></td>
+			</tr>
+			<tr>
+				<td>元素单位</td>
+				<td><input type="text" id="valueUnit" name="valueUnit" value=""/></td>
+			</tr>
+			<tr>
+				<td>数据类别</td>
+				<td><select id="dataType" name="dataType">
+					<option value="int">整数</option>
+					<option value="double">小数</option>
+				</select></td>
+			</tr>
+			<tr>
+				<td>是否可编辑</td>
+				<td><select name="writable" id="writable">
 					<option value="Y">是</option>
 					<option value="N">否</option>
-				</select></td>
-				</tr>
-				<tr>
-					<td>是否标准值</td>
-					<td><select name="isFinal" id="isFinal">
+			</select></td>
+			</tr>
+			<tr>
+				<td>是否标准值</td>
+				<td><select name="isFinal" id="isFinal">
 					<option value="N">否</option>
 					<option value="Y">是</option>
-				</select></td>
-				</tr>
-				<tr>
-					<td>可填最小范围</td>
-					<td><input type="text" id="minVal" name="minVal" value=""/></td>
-				</tr>
-				<tr>
-					<td>可填最大范围</td>
-					<td><input type="text" id="maxVal" name="maxVal" value=""/></td>
-				</tr>
-			</thead>
-			<tbody>
-			</tbody>
+			</select></td>
+			</tr>
+			<tr>
+				<td>可填最小范围</td>
+				<td><input type="text" id="minVal" name="minVal" value=""/></td>
+			</tr>
+			<tr>
+				<td>可填最大范围</td>
+				<td><input type="text" id="maxVal" name="maxVal" value=""/></td>
+			</tr>
 		</table>
-		<div align="right">
-			<button id="addFormulaElOkBtn"></button>
-			<button id="addFormulaElCancelBtn"></button>
-		</div>
-	</form>
+	</div>
   </body>
 </html>

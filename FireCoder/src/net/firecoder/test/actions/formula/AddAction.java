@@ -3,9 +3,11 @@
  */
 package net.firecoder.test.actions.formula;
 
+import java.util.List;
+
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
-import net.firecoder.test.dao.Pagination;
+import net.firecoder.test.pojo.FormulaElementPojo;
 import net.firecoder.test.pojo.FormulaPojo;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -25,6 +27,7 @@ public class AddAction extends ActionSupport implements ModelDriven<FormulaPojo>
 	private FormulaManager formulaManager;
 	
 	private FormulaPojo formula = new FormulaPojo();
+	private List<FormulaElementPojo> formulaElList;
 	
 	@Action(value="add",
 		results={
@@ -32,6 +35,7 @@ public class AddAction extends ActionSupport implements ModelDriven<FormulaPojo>
 		}
 	)
 	public String execute() {
+		// TODO 接收计算元素参数
 		try {
 			formulaManager.addFormula(formula);
 		} catch (BeanException e) {
@@ -48,6 +52,14 @@ public class AddAction extends ActionSupport implements ModelDriven<FormulaPojo>
 	@Override
 	public FormulaPojo getModel() {
 		return formula;
+	}
+
+	public List<FormulaElementPojo> getFormulaElList() {
+		return formulaElList;
+	}
+
+	public void setFormulaElList(List<FormulaElementPojo> formulaElList) {
+		this.formulaElList = formulaElList;
 	}
 	
 }

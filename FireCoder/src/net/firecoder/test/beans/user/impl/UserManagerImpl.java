@@ -35,7 +35,8 @@ public class UserManagerImpl implements UserManager {
 	public boolean addUser(UserPojo pojo) throws BeanException {
 		boolean success = false;
 		try {
-			success = userDao.add(pojo);
+			userDao.add(pojo);
+			success = true;
 		} catch (Exception ex) {
 			throw new BeanException(ex);
 		}

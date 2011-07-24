@@ -3,6 +3,7 @@
  */
 package net.firecoder.test.dao.hibernate;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -29,10 +30,9 @@ public abstract class HibernateDao<T> implements Dao<T> {
 	}
 	
 	@Override
-	public boolean add(T data) throws Exception {
+	public String add(T data) throws Exception {
 		Session session = sessionFactory.getCurrentSession();
-		session.save(data);
-		return true;
+		return String.valueOf(session.save(data));
 	}
 	
 	@Override
