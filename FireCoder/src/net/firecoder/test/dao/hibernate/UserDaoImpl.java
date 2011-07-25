@@ -7,8 +7,10 @@ import java.util.List;
 
 import net.firecoder.test.dao.Pagination;
 import net.firecoder.test.dao.UserDao;
+import net.firecoder.test.pojo.FormulaElementPojo;
 import net.firecoder.test.pojo.UserPojo;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -34,7 +36,10 @@ public class UserDaoImpl extends HibernateDao<UserPojo> implements UserDao {
 	}
 
 	@Override
-	public Pagination<UserPojo> findAll(int startIndex, int pageSize) throws Exception {
-		return null;
+	public Pagination<UserPojo> findAll(UserPojo term, int startIndex, int pageSize) throws Exception {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria c = session.createCriteria(UserPojo.class);
+		c = createCriteria(c, term);
+		return findPageByCriteria(c, startIndex, pageSize);
 	}
 }

@@ -15,7 +15,7 @@ public interface Dao<T> {
 	 * @return
 	 * @throws Exception
 	 */
-	public Pagination<T> findAll(int startIndex, int pageSize) throws Exception;
+	public Pagination<T> findAll(T term, int startIndex, int pageSize) throws Exception;
 	
 	/**
 	 * 新增数据
@@ -34,6 +34,15 @@ public interface Dao<T> {
 	public boolean update(T data) throws Exception;
 	
 	/**
+	 * 修改数据，按条件修改
+	 * @param data
+	 * @param term 修改数据的条件
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean updateByTerm(T data, T term) throws Exception;
+	
+	/**
 	 * 删除数据，对象中的编号将被作为删除条件
 	 * @param data
 	 * @return
@@ -42,10 +51,19 @@ public interface Dao<T> {
 	public boolean delete(T data) throws Exception;
 	
 	/**
-	 * 获取数据，对象中的编号作为获取条件
-	 * @param data
+	 * 删除数据，按条件删除
+	 * @param term 删除数据的条件
 	 * @return
 	 * @throws Exception
 	 */
-	public T get(T data) throws Exception;
+	public boolean deleteByTerm(T term) throws Exception;
+	
+	/**
+	 * 获取数据，按条件获取
+	 * @param term
+	 * @return
+	 * @throws Exception
+	 */
+	public T get(T term) throws Exception;
+	
 }

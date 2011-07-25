@@ -14,6 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import net.firecoder.test.dao.Term;
+import net.firecoder.test.dao.TermType;
+
 /**
  * @author ≈À≥¨
  * create: 2011-7-19
@@ -24,8 +27,10 @@ public class FormulaElementPojo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
+	@Term
 	private int id;
 	@Column(name="name")
+	@Term
 	private String name;
 	@Column(name="value")
 	private BigDecimal value;
@@ -45,6 +50,7 @@ public class FormulaElementPojo {
 	//@JoinColumn(name="formulaId", nullable=false, updatable=false)
 	//private FormulaPojo formula;
 	@Column(name="formulaId")
+	@Term
 	private int formulaId;
 	
 	public int getFormulaId() {

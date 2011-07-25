@@ -16,11 +16,11 @@ import org.hibernate.Session;
 public class FormulaDaoImpl extends HibernateDao<FormulaPojo> {
 
 	@Override
-	public Pagination<FormulaPojo> findAll(int startIndex, int pageSize)
+	public Pagination<FormulaPojo> findAll(FormulaPojo term, int startIndex, int pageSize)
 			throws Exception {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria c = session.createCriteria(FormulaPojo.class);
-		//c.add(Restrictions.eq("id", 4));
+		c = createCriteria(c, term);
 		return findPageByCriteria(c, startIndex, pageSize);
 	}
 	

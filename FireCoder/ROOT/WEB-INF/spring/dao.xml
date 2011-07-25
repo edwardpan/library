@@ -17,4 +17,7 @@
 	
 	<bean id="formulaDao" class="net.firecoder.test.dao.hibernate.FormulaDaoImpl" parent="hibernateDao">
 	</bean>
+	
+	<bean id="formulaElementDao" class="net.firecoder.test.dao.hibernate.FormulaElementDaoImpl" parent="hibernateDao">
+	</bean>
 </beans>

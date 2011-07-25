@@ -34,7 +34,7 @@ public class ListAction extends ActionSupport implements ModelDriven<JQueryDataT
 	public String listFormula() {
 		try {
 			list.setPage(
-					formulaManager.listFormulas(list.getiDisplayStart(), list.getiDisplayLength()));
+					formulaManager.listFormulas(null, list.getiDisplayStart(), list.getiDisplayLength()));
 			list.setITotalRecords((int)list.getPage().getTotalCount());
 			list.setITotalDisplayRecords((int)list.getPage().getTotalCount());
 		} catch (BeanException e) {

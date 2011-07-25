@@ -43,6 +43,7 @@
                 "sSearch": "搜索",
                 "sInfoFiltered": "(从 _MAX_ 条数据中过滤)",
                 "sInfoEmtpy": "没有数据",
+                "sEmptyTable": "没有数据",
                 "sProcessing": "正在加载数据...",
                 "oPaginate": {
                     "sFirst": "首页",
@@ -86,7 +87,6 @@
 				} else if (status == "failure"){
 					$().message("增加计算公式失败");
 				}
-				$().message("增加计算公式成功");
 				dataGrid.fnDraw();
 			},
 			fnOnEdited: function(status){ 	
@@ -120,17 +120,15 @@
 					indicator:'保存是否取精度设置...',
 					tooltip:'点击设置是否对计算结果取精度',
 					loadtext:'加载...',
-					cssclass:'required',
 					type:'select',
-					onblur:'submit',
+					submit:'保存',
 					data:"{'Y':'是','N':'否'}"},
 				{
 					indicator:'保存精度长度设置...',
 					tooltip:'点击设置精度长度（保留的小数位）',
 					loadtext:'加载...',
-					cssclass:'required number',
 					type:'select',
-					onblur:'submit',
+					submit:'保存',
 					data:"{'0':'0','1':'1','2':'2','3':'3','4':'4','5':'5','6':'6','7':'7','8':'8','9':'9','10':'10'}"},
 				{
 					indicator:'保存结果单位设置...',
@@ -180,7 +178,7 @@
 		elDataGrid = $("#elDataGrid").dataTable({
 			"oLanguage": {//汉化  
                 "sLengthMenu": "每页显示 _MENU_ 条记录",
-                "sZeroRecords": "",
+                "sZeroRecords": "未填加",
                 "sInfo": "当前数据为从第 _START_ 到第 _END_ 条数据；总共有 _TOTAL_ 条记录",
                 "sSearch": "搜索",
                 "sInfoFiltered": "(从 _MAX_ 条数据中过滤)",
@@ -204,49 +202,49 @@
 				{ 
 					"sWidth":"10%", 
 					fnRender:function(data){
-						return "<input type='text' id='name' name='formulaElList.name' value='" + data.aData[0] + "' size='6'/>";
+						return "<input type='text' id='names' name='names' value='" + data.aData[0] + "' class='required' size='6'/>";
 					} 
 				}, 
 				{ 
 					"sWidth":"15%", 
 					fnRender:function(data){
-						return "<input type='text' id='value' name='formulaElList.value' value='" + data.aData[1] + "' size='11'/>";
+						return "<input type='text' id='values' name='values' value='" + data.aData[1] + "' class='number' size='11'/>";
 					} 
 				},
 				{ 
 					"sWidth":"10%", 
 					fnRender:function(data){
-						return "<input type='text' id='valueUnit' name='formulaElList.valueUnit' value='" + data.aData[2] + "' size='6'/>";
+						return "<input type='text' id='valueUnits' name='valueUnits' value='" + data.aData[2] + "' size='6'/>";
 					} 
 				},
 				{ 
 					"sWidth":"10%", 
 					fnRender:function(data){
-						return "<input type='text' id='dataType' name='formulaElList.dataType' value='" + data.aData[3] + "' size='6'/>";
+						return "<input type='text' id='dataTypes' name='dataTypes' value='" + data.aData[3] + "' class='required' size='6'/>";
 					} 
 				},
 				{ 
 					"sWidth":"10%", 
 					fnRender:function(data){
-						return "<input type='text' id='writable' name='formulaElList.writable' value='" + data.aData[4] + "' size='6'/>";
+						return "<input type='text' id='writables' name='writables' value='" + data.aData[4] + "' class='required' size='6'/>";
 					} 
 				},
 				{ 
 					"sWidth":"10%", 
 					fnRender:function(data){
-						return "<input type='text' id='isFinal' name='formulaElList.isFinal' value='" + data.aData[5] + "' size='6'/>";
+						return "<input type='text' id='isFinals' name='isFinals' value='" + data.aData[5] + "' class='required' size='6'/>";
 					} 
 				},
 				{ 
 					"sWidth":"10%", 
 					fnRender:function(data){
-						return "<input type='text' id='minVal' name='formulaElList.minVal' value='" + data.aData[6] + "' size='6'/>";
+						return "<input type='text' id='minVals' name='minVals' value='" + data.aData[6] + "' class='number' size='6'/>";
 					} 
 				},
 				{ 
 					"sWidth":"10%", 
 					fnRender:function(data){
-						return "<input type='text' id='maxVal' name='formulaElList.maxVal' value='" + data.aData[7] + "' size='6'/>";
+						return "<input type='text' id='maxVals' name='maxVals' value='" + data.aData[7] + "' class='number' size='6'/>";
 					} 
 				},
 				{ "sWidth":"10%" }
@@ -332,7 +330,19 @@
 			</tr>
 			<tr>
 				<td>精度长度：</td>
-				<td><input type="text" id="scale" name="scale" value=""/></td>
+				<td><select id="scale" name="scale" >
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select></td>
 			</tr>
 			<tr>
 				<td>结果单位：</td>
@@ -369,11 +379,11 @@
 		<table border="0" cellpadding="0" cellspacing="0">
 			<tr>
 				<td>代入元素</td>
-				<td><input type="text" id="name" name="name" value=""/></td>
+				<td><input type="text" id="name" name="name" value="" class="required"/></td>
 			</tr>
 			<tr>
 				<td>默认值</td>
-				<td><input type="text" id="value" name="value" value=""/></td>
+				<td><input type="text" id="value" name="value" value="" class="number"/></td>
 			</tr>
 			<tr>
 				<td>元素单位</td>
@@ -402,11 +412,11 @@
 			</tr>
 			<tr>
 				<td>可填最小范围</td>
-				<td><input type="text" id="minVal" name="minVal" value=""/></td>
+				<td><input type="text" id="minVal" name="minVal" value="" class="number"/></td>
 			</tr>
 			<tr>
 				<td>可填最大范围</td>
-				<td><input type="text" id="maxVal" name="maxVal" value=""/></td>
+				<td><input type="text" id="maxVal" name="maxVal" value="" class="number"/></td>
 			</tr>
 		</table>
 	</div>

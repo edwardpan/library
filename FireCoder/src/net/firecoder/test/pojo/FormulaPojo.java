@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import net.firecoder.test.dao.Term;
+
 /**
  * @author ≈À≥¨
  * create: 2011-7-19
@@ -23,17 +25,21 @@ import javax.persistence.Table;
 public class FormulaPojo {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Term
 	@Column(name="id")
 	private int id;
 	@Column(name="expression")
+	@Term
 	private String expression;
 	@Column(name="isSetScale")
+	@Term
 	private String isSetScale;
 	@Column(name="scale")
 	private int scale;
 	//@OneToMany(targetEntity=FormulaElementPojo.class, cascade=CascadeType.ALL, mappedBy="formula")
 	//private List<FormulaElementPojo> formulaElement;
 	@Column(name="resultUnit")
+	@Term
 	private String resultUnit;
 	
 	public int getId() {

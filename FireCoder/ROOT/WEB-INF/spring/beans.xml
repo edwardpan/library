@@ -12,6 +12,7 @@
     
     <bean id="formulaManager" class="net.firecoder.test.beans.formula.impl.FormulaManagerImpl">
     	<property name="formulaDao" ref="formulaDao"/>
+    	<property name="formulaElementDao" ref="formulaElementDao"/>
     </bean>
     
 </beans>
