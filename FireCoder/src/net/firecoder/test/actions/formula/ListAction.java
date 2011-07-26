@@ -3,10 +3,12 @@
  */
 package net.firecoder.test.actions.formula;
 
+import java.util.List;
+
 import net.firecoder.test.actions.model.JQueryDataTablesList;
 import net.firecoder.test.beans.BeanException;
 import net.firecoder.test.beans.formula.FormulaManager;
-import net.firecoder.test.dao.Pagination;
+import net.firecoder.test.pojo.FormulaElementPojo;
 import net.firecoder.test.pojo.FormulaPojo;
 
 import org.apache.struts2.convention.annotation.Action;
@@ -43,7 +45,7 @@ public class ListAction extends ActionSupport implements ModelDriven<JQueryDataT
 
 		return SUCCESS;
 	}
-
+	
 	public void setFormulaManager(FormulaManager formulaManager) {
 		this.formulaManager = formulaManager;
 	}

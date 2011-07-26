@@ -17,4 +17,6 @@ public interface FormulaManager {
 	public void modifyFormulaById(FormulaPojo formula) throws BeanException;
 	
 	public FormulaPojo getFormulaById(FormulaPojo formula) throws BeanException;
+	
+	public Pagination<FormulaElementPojo> listElementByFormulaId(FormulaElementPojo term) throws BeanException;
 }

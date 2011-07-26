@@ -85,4 +85,16 @@ public class FormulaManagerImpl implements FormulaManager {
 		return pojo;
 	}
 
+	@Override
+	public Pagination<FormulaElementPojo> listElementByFormulaId(
+			FormulaElementPojo term) throws BeanException {
+		Pagination<FormulaElementPojo> page = null;
+		try {
+			page = formulaElementDao.findAll(term, 0, 99999);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return page;
+	}
+
 }
