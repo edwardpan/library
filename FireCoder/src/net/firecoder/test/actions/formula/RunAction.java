@@ -7,7 +7,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.firecoder.test.beans.BeanException;
+import net.firecoder.expressionhelper.ExpressionHelper;
+import net.firecoder.expressionhelper.Variable;
 import net.firecoder.test.beans.formula.FormulaManager;
 import net.firecoder.test.pojo.FormulaPojo;
 
@@ -16,8 +17,6 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.woobsoft.expressionhelper.ExpressionHelper;
-import com.woobsoft.expressionhelper.Variable;
 
 /**
  * @author ≈À≥¨

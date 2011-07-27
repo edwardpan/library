@@ -2,6 +2,8 @@ package net.firecoder.test.actions.expression;
 
 import java.util.List;
 
+import net.firecoder.expressionhelper.ExpressionHelper;
+import net.firecoder.expressionhelper.Variable;
 import net.sf.json.JSONArray;
 
 import org.apache.log4j.Logger;
@@ -10,8 +12,6 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.woobsoft.expressionhelper.ExpressionHelper;
-import com.woobsoft.expressionhelper.Variable;
 
 @ParentPackage("json-default")
 public class ExpressionAction {
