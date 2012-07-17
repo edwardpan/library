@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="javadoc">
+<target name="javadoc">
+<javadoc access="private" author="true" classpath="libs/jacob.jar" destdir="release/1.0/doc/api" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="com.woobsoft.jacobword.exception,com.woobsoft.jacobword,com.woobsoft.jacobword.document,com.woobsoft.jacobword.range,com.woobsoft.jacobword.table,com.woobsoft.jacobword.inlineshape" source="1.6" sourcepath="src" splitindex="true" use="true" version="true"/>
+</target>
+</project>
