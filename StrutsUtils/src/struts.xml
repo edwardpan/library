@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="base" extends="struts-default" abstract="true">
+		<interceptors>
+			<interceptor name="permission" class="com.envirlims.actions.PermissionInterceptor"/>
+			<interceptor name="jspcontent" class="com.envirlims.actions.JspContentInterceptor">
+				<param name="content">/WEB-INF/content</param>
+			</interceptor>
+			<interceptor-stack name="envirLimsStack">
+				<interceptor-ref name="jspcontent" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="permissionStack">
+				<interceptor-ref name="envirLimsStack" />
+				<interceptor-ref name="permission" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="envirLimsStack" />
+		<global-results>
+			<result name="securityerror">/securityerror.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="main" type="redirectAction">main</result>
+		</global-results>
+		    <!-- 
+		<global-exception-mappings>
+			<exception-mapping result="securityerror" exception="org.apache.struts.register.exceptions.SecurityBreachException"/>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		     -->
+	</package>
+	<package name="basePermission" extends="base" abstract="true">
+		<default-interceptor-ref name="permissionStack" />
+	</package>
+	<package name="baseJSON" extends="json-default" abstract="true">
+		<interceptors>
+			<interceptor name="permission" class="com.envirlims.actions.PermissionInterceptor"/>
+			<interceptor name="jspcontent" class="com.envirlims.actions.JspContentInterceptor">
+				<param name="content">/WEB-INF/content/</param>
+			</interceptor>
+			<interceptor-stack name="envirLimsStack">
+				<interceptor-ref name="jspcontent" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="permissionStack">
+				<interceptor-ref name="envirLimsStack" />
+				<interceptor-ref name="permission" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="envirLimsStack" />
+		<global-results>
+			<result name="securityerror">/securityerror.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="main" type="redirectAction">main</result>
+			<result name="jsonPermissionLimit" type="chain">
+	            <param name="namespace">/</param>
+	            <param name="actionName">permissionLimit</param>
+			</result>
+		</global-results>
+		<!-- global-exception-mappings>
+			<exception-mapping result="securityerror" exception="org.apache.struts.register.exceptions.SecurityBreachException"/>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings -->
+	</package>
+	<package name="basePermissionJSON" extends="baseJSON" abstract="true">
+		<default-interceptor-ref name="permissionStack" />
+	</package>
+	<package name="permissionLimit" namespace="/" extends="baseJSON">
+		<action name="permissionLimit" class="com.envirlims.actions.PermissionLimitJsonAction">
+			<result name="success" type="json"/>
+		</action>
+	</package>
+</struts>
