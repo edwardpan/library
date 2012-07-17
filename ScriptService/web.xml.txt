@@ -1,0 +1,5 @@
+<servlet>
+	    <servlet-name>ServiceServerServlet</servlet-name>
+	    <servlet-class>com.envirlims.service.web.servlet.ServiceServSpringSupportServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>

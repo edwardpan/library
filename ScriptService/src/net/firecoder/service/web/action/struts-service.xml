@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="serviceJSON" namespace="/service" extends="baseJSON">
+		<action name="call" class="com.envirlims.service.web.action.ServiceCallAction">
+			<result name="json" type="json"/>
+			<result name="text" type="plainText">
+                <param name="charSet">UTF-8</param>
+            </result>
+		</action>
+	</package>
+	<package name="service" namespace="/service" extends="base">
+		<action name="start" method="start" class="com.envirlims.service.web.action.ServiceServSpringSupportAction">
+			<result name="success" type="plainText">
+                <param name="charSet">UTF-8</param>
+            </result>
+		</action>
+		<action name="restart" method="restart" class="com.envirlims.service.web.action.ServiceServSpringSupportAction">
+			<result name="success" type="plainText">
+                <param name="charSet">UTF-8</param>
+            </result>
+		</action>
+		<action name="stop" method="stop" class="com.envirlims.service.web.action.ServiceServSpringSupportAction">
+			<result name="success" type="plainText">
+                <param name="charSet">UTF-8</param>
+            </result>
+		</action>
+	</package>
+</struts>
