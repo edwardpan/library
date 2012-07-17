@@ -4,6 +4,7 @@
 package net.firecoder.service;
 
 import groovy.lang.Binding;
+import groovy.util.GroovyScriptEngine;
 
 /**
  * 扩展服务
@@ -11,6 +12,11 @@ import groovy.lang.Binding;
  * create: 2011-9-6
  */
 public interface Service {
+	/**
+	 * 获取脚本引擎
+	 * @return
+	 */
+	public GroovyScriptEngine getGSE();
 	/**
 	 * 获取服务名
 	 * @return

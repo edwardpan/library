@@ -1,7 +1,7 @@
 /* SpringBeanUtils.java
  * project: EnvirLims
  */
-package net.firecoder.service.init;
+package net.firecoder.service.web;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

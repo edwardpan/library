@@ -1,7 +1,7 @@
 /* SpringBeanLoadConfig.java
  * project: EnvirLims
  */
-package net.firecoder.service.init;
+package net.firecoder.service.web;
 
 /**
  * 配置初始化脚本服务时需要包含或排除的spring中的bean

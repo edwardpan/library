@@ -47,7 +47,7 @@ public class GroovyServiceServerEngine implements ServiceServer {
 	@Override
 	public void start(Map<String, Object> publicBinding) throws Exception {
 		if (publicBinding != null) {
-			publicBinding.putAll(publicBinding);
+			this.publicBinding.putAll(publicBinding);
 		}
 		try {
 			gse = new GroovyScriptEngine(addonsRoot);
@@ -73,7 +73,7 @@ public class GroovyServiceServerEngine implements ServiceServer {
 					continue;
 				}
 				servicePool.registerService(
-						new GroovyServiceImpl(addonDir.getName(), gse, publicBinding));
+						new GroovyServiceImpl(addonDir.getName(), gse, this.publicBinding));
 				log.debug("注册扩展服务：" + addonDir.getName() + 
 						"，入口脚本：" + addonScript.getName());
 			}

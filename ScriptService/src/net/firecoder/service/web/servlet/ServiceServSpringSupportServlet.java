@@ -1,4 +1,4 @@
-package net.firecoder.service.init;
+package net.firecoder.service.web.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.firecoder.service.GroovyServiceServerEngine;
 import net.firecoder.service.ServiceServer;
+import net.firecoder.service.web.SpringBeanUtils;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;

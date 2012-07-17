@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 import net.firecoder.service.GroovyServiceServerEngine;
 import net.firecoder.service.ServiceServer;
-import net.firecoder.service.init.SpringBeanUtils;
+import net.firecoder.service.web.SpringBeanUtils;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
