@@ -84,6 +84,7 @@ public class GroovyServiceImpl implements Service {
 				result = script.run();
 				log.debug("扩展服务" + serviceName + "运行结果：" + result);
 			} catch (Exception e) {
+				log.debug(e.getMessage(), e);
 				throw new Exception("扩展服务" + serviceName + "执行出错！", e);
 			} finally {
 				// 服务调用完毕后设置初始化状态为true，表示清空之前服务运行时被注入的所有资源

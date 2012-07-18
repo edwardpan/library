@@ -40,7 +40,7 @@ public class ServiceCallAction extends BaseAction {
 				}
 			} catch (Exception e) {
 				success = false;
-				message += "³ö´í£¡" + e.getMessage() + e.getMessage();
+				message += "³ö´í£¡" + e.getMessage();
 			}
 		} else {
 			success = false;
